@@ -1,0 +1,290 @@
+/* Fuentes y Variables */
+@font-face {
+  font-family: 'Roboto';
+  src: 
+    local("Roboto"),
+    url("../fonts/roboto-400.woff2") format("woff2"),
+    url("../fonts/roboto-400.woff") format("woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: 
+    local("Roboto"),
+    url("../fonts/roboto-500.woff2") format("woff2"),
+    url("../fonts/roboto-500.woff") format("woff");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: 
+    local("Roboto"),
+    url("../fonts/roboto-700.woff2") format("woff2"),
+    url("../fonts/roboto-700.woff") format("woff");
+  font-weight: 700;
+}
+:root {
+  --header-background: #2d5c8480;
+  --banner-background: #23476780;
+  --primary-color: #f3f4f6;
+  --secondary-color: #e8f1fa;
+  --link-text: #669ccb;
+  --benefits-text: #282d31;
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 16px;
+}
+
+/* Estilos Generales */
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100vh repeat(4, auto);
+  grid-template-areas: 
+  "header"
+  "places"
+  "banner"
+  "benefits"
+  "footer";
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+/* Estilos Reutilizables */
+.container-width {
+  width: clamp(300px, 90%, 1250px);
+  margin: auto;
+}
+.section-title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.section-subtitle {
+  margin-bottom: 5rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+.section-padding {
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+/* Estilos de Header */
+.header {
+  grid-area: header;
+  color: var(--primary-color);
+  background: 
+    linear-gradient(var(--header-background), var(--header-background)), 
+    url(../images/background-1.webp)
+    no-repeat center center/cover;
+}
+.header__nav, .header__nav__menu, .header__container {
+  display: flex;
+}
+.header__nav {
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+}
+.header__nav__logo {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+.header__nav__menu, .header__container {
+  gap: 2rem;
+}
+.header__nav__menu__link, .header__link {
+  color: var(--primary-color);
+  transition-duration: 0.3s;
+}
+.header__container {
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+}
+.header__title {
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 5rem;
+}
+.header__text {
+  width: 350px;
+}
+.header__link {
+  width: fit-content;
+  padding: 1rem 2rem;
+  background-color: var(--link-text);
+  border-radius: 5px;
+}
+
+/* Efectos de Header */
+.header__nav__menu__link:hover {
+  color: var(--link-text);
+}
+.header__link:hover {
+  background-color: #5681a7;
+}
+
+/* Estilos de Lugares */
+.places {
+  grid-area: places;
+  color: var(--link-text);
+  background-color: var(--secondary-color);
+}
+.places__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.places__card {
+  background-color: var(--primary-color);
+}
+.places__card__title {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #767268;
+}
+.places__card__title__icon {
+  height: 1rem;
+}
+
+/* Estilos de Banner */
+.banner {
+  grid-area: banner;
+  padding: 10rem 1rem;
+  text-align: right;
+  color: var(--primary-color);
+  background: 
+    linear-gradient(var(--header-background), var(--header-background)), 
+    url(../images/background-2.webp)
+    no-repeat center center/cover;
+}
+.banner__title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.banner__text {
+  margin-bottom: 2.5rem;
+  padding-left: 20rem;
+}
+.banner__link {
+  padding: 0.5rem 2rem;
+  color: var(--secondary-color);
+  background-color: transparent;
+  border: 2px solid var(--secondary-color);
+}
+
+/* Estilos de Benefits */
+.benefits, .benefits__card__title {
+  color: var(--benefits-text);
+}
+.benefits {
+  grid-area: benefits;
+  background-color: var(--secondary-color);
+}
+.benefits__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.benefits__img{
+  /* La propìedad grid area también nos permite espceíficar la posición del elemento en nuestro grid */
+  /* Su sintáxis es: grid-area: fila inicio + columna inicio + fila final + columna final */
+  grid-area: 1 / 1 / 3 / 3;
+  width: 100%;
+}
+.benefits__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  background-color: var(--primary-color);
+}
+.benefits__card__icon {
+  height: 3rem;
+}
+.benefits__card__title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Estilos de Footer */
+.footer, .footer__socials {
+  display: flex;
+  gap: 2rem;
+}
+.footer {
+  grid-area: footer;
+  flex-direction: column;
+  align-items: center;
+  color: var(--secondary-color);
+  background-color: var(--benefits-text);
+}
+.footer__title {
+  font-size: 1.5rem;
+}
+.footer__socials__icon {
+  width: 1.1rem;
+}
+
+/* Estilos en Laptop */
+@media (width <= 1000px) {
+  .header__text {
+    width: 50%;
+  }
+  .benefits__card {
+    gap: 0.5rem;
+  }
+  .benefits__card__icon {
+    height: 2.5rem;
+  }
+  .benefits__card__title {
+    font-size: 1rem;
+  }
+  .benefits__card__text {
+    font-size: 0.7rem;
+  }
+}
+
+/* Estilos en Tablet */
+@media (width <= 750px) {
+  .header__nav__menu {
+    display: none;
+  }
+  .header__container {
+    text-align: center;
+  }
+  .header__text {
+    width: 100%;
+  }
+  .header__link {
+    margin: 0 auto;
+  }
+  .places__container, .benefits__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .banner {
+    text-align: center;
+  }
+  .banner__text {
+    padding-left: 0;
+  }
+}
+
+/* Estilos en Celular */
+@media (width <= 380px) {
+  .places__container {
+    grid-template-columns: 1fr;
+  }
+}
